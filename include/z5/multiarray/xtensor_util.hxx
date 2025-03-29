@@ -1,8 +1,16 @@
 #pragma once
 
+#if __has_include("xtensor/xarray.hpp")
 #include "xtensor/xarray.hpp"
 #include "xtensor/xadapt.hpp"
 #include "xtensor/xstrided_view.hpp"
+#elif __has_include("xtensor/containers/xarray.hpp")
+#include "xtensor/containers/xarray.hpp"
+#include "xtensor/containers/xadapt.hpp"
+#include "xtensor/views/xstrided_view.hpp"
+#else
+#error Unknown xtensor version.
+#endif
 
 namespace z5 {
 namespace multiarray {

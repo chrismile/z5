@@ -7,9 +7,17 @@
 #include "z5/multiarray/xtensor_util.hxx"
 #include "z5/util/threadpool.hxx"
 
+#if __has_include("xtensor/xarray.hpp")
 #include "xtensor/xarray.hpp"
 #include "xtensor/xstrided_view.hpp"
 #include "xtensor/xadapt.hpp"
+#elif __has_include("xtensor/containers/xarray.hpp")
+#include "xtensor/containers/xarray.hpp"
+#include "xtensor/views/xstrided_view.hpp"
+#include "xtensor/containers/xadapt.hpp"
+#else
+#error Unknown xtensor version.
+#endif
 
 
 namespace z5 {

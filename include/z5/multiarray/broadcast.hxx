@@ -4,7 +4,13 @@
 #include "z5/multiarray/xtensor_access.hxx"
 #include "z5/util/threadpool.hxx"
 
+#if __has_include("xtensor/xeval.hpp")
 #include "xtensor/xeval.hpp"
+#elif __has_include("xtensor/core/xeval.hpp")
+#include "xtensor/core/xeval.hpp"
+#else
+#error Unknown xtensor version.
+#endif
 
 
 namespace z5 {
